@@ -1,0 +1,13 @@
+#nullable enable
+Versionary.DependencyInjection.VersionaryBuilderExtensions
+Versionary.MediatR.MediatRMigrationOptions
+Versionary.MediatR.MediatRMigrationOptions.MediatRMigrationOptions() -> void
+Versionary.MediatR.MediatRMigrationOptions.Strategy.get -> Versionary.MediatR.MigrationStrategy
+Versionary.MediatR.MediatRMigrationOptions.Strategy.set -> void
+Versionary.MediatR.MigrationPipelineBehavior<TRequest, TResponse>
+Versionary.MediatR.MigrationPipelineBehavior<TRequest, TResponse>.Handle(TRequest request, MediatR.RequestHandlerDelegate<TResponse>! next, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<TResponse>!
+Versionary.MediatR.MigrationPipelineBehavior<TRequest, TResponse>.MigrationPipelineBehavior(MediatR.IMediator! mediator, Versionary.Execution.IContractTranslator! translator, Versionary.Graph.IMigrationGraph! graph, Versionary.MediatR.MediatRMigrationOptions! options) -> void
+Versionary.MediatR.MigrationStrategy
+Versionary.MediatR.MigrationStrategy.Reentrant = 1 -> Versionary.MediatR.MigrationStrategy
+Versionary.MediatR.MigrationStrategy.SinglePass = 0 -> Versionary.MediatR.MigrationStrategy
+static Versionary.DependencyInjection.VersionaryBuilderExtensions.AddMediatRPipeline(this Versionary.DependencyInjection.IVersionaryBuilder! builder, System.Action<Versionary.MediatR.MediatRMigrationOptions!>? configure = null) -> Versionary.DependencyInjection.IVersionaryBuilder!

@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Runs the connector's whole test suite against a different MediatR major version than the one the
+    connector was compiled against.
+
+    MediatR changed RequestHandlerDelegate<TResponse> between 12.x (parameterless) and 13.x+ (takes a
+    CancellationToken). Calling it with `next()` compiles to a direct Invoke, so a connector built
+    against one major version would throw MissingMethodException on the other. This project is what
+    keeps RequestHandlerDelegateInvoker honest: same tests, same connector binary, newer MediatR.
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Versionary.MediatR.Tests</RootNamespace>
+    <!--
+      The shared test sources call next() without a token so that they also compile against MediatR
+      12, where the delegate takes no parameters. On 14 that trips CA2016.
+    -->
+    <NoWarn>$(NoWarn);CA2016</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../src/Versionary.MediatR/Versionary.MediatR.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="../Versionary.MediatR.Tests/*.cs" LinkBase="Shared" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" VersionOverride="14.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" VersionOverride="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" VersionOverride="10.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" VersionOverride="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" VersionOverride="10.0.0" />
+  </ItemGroup>
+
+</Project>

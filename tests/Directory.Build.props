@@ -1,0 +1,17 @@
+<Project>
+
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <!-- Set after the import: the root props decides this before IsPackable is known here. -->
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <!--
+      CA1707 forbids underscores in member names. Test names use them deliberately, to separate
+      the method under test from the behaviour and the condition.
+    -->
+    <NoWarn>$(NoWarn);CA1707</NoWarn>
+  </PropertyGroup>
+
+</Project>

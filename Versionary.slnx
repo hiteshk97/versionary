@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/samples/">
+    <Project Path="samples/Versionary.Samples.Default/Versionary.Samples.Default.csproj" />
+    <Project Path="samples/Versionary.Samples.MediatR/Versionary.Samples.MediatR.csproj" />
+    <Project Path="samples/Versionary.Samples.Tour/Versionary.Samples.Tour.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Versionary.Abstractions/Versionary.Abstractions.csproj" />
+    <Project Path="src/Versionary.MediatR/Versionary.MediatR.csproj" />
+    <Project Path="src/Versionary/Versionary.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Versionary.MediatR.CompatibilityTests/Versionary.MediatR.CompatibilityTests.csproj" />
+    <Project Path="tests/Versionary.MediatR.Tests/Versionary.MediatR.Tests.csproj" />
+    <Project Path="tests/Versionary.Tests/Versionary.Tests.csproj" />
+    <Project Path="tests/Versionary.TrimmingTests/Versionary.TrimmingTests.csproj" />
+  </Folder>
+</Solution>

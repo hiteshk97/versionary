@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Not a unit test project: the assertion is the publish itself.
+
+    Versionary declares IsAotCompatible, and every reflective entry point carries a hand-written
+    [RequiresUnreferencedCode]. Nothing checks those annotations are complete — the library's own
+    build only analyses the library. This app uses the trim-safe API surface exclusively and is
+    published trimmed with warnings as errors, so an unannotated reflective call in the library, or
+    an AOT-safe overload that quietly stopped being one, fails CI here.
+  -->
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <!-- Not xunit, so the shared test props must not claim otherwise. -->
+    <IsTestProject>false</IsTestProject>
+
+    <PublishTrimmed>true</PublishTrimmed>
+    <PublishAot>true</PublishAot>
+    <InvariantGlobalization>true</InvariantGlobalization>
+
+    <!-- One diagnostic per offending call site rather than a single rolled-up warning. -->
+    <TrimmerSingleWarn>false</TrimmerSingleWarn>
+    <!--
+      TreatWarningsAsErrors is inherited and already covers the IL2xxx/IL3xxx analyzer warnings the
+      compiler raises. These two say the same for the warnings the linker and the AOT compiler raise
+      at publish time, so the gate does not depend on a CI flag that would also promote unrelated
+      warnings (SourceLink's, for one) and fail this step for the wrong reason.
+    -->
+    <ILLinkTreatWarningsAsErrors>true</ILLinkTreatWarningsAsErrors>
+    <TrimmerTreatWarningsAsErrors>true</TrimmerTreatWarningsAsErrors>
+    <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+    <EnableAotAnalyzer>true</EnableAotAnalyzer>
+    <EnableSingleFileAnalyzer>true</EnableSingleFileAnalyzer>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../src/Versionary/Versionary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Microsoft.Extensions.Logging" />
+  </ItemGroup>
+
+</Project>

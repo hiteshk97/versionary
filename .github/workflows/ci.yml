@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # MinVer derives the package version from tags, so it needs full history.
+          fetch-depth: 0
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+
+      - run: dotnet restore
+
+      - run: dotnet build --configuration Release --no-restore
+
+      # Runs the connector suite twice: once against the MediatR version it was compiled
+      # against, and once against the next major, whose RequestHandlerDelegate has a
+      # different signature.
+      - run: dotnet test --configuration Release --no-build --verbosity normal
+
+      # Versionary claims IsAotCompatible and hand-annotates every reflective entry point. Nothing
+      # else checks those annotations are complete, because the library's own build only analyses
+      # the library. This publishes a real application over the trim-safe surface — the project
+      # treats trim and AOT warnings as errors — then runs the native binary: an unannotated
+      # reflective call, or an "AOT-safe" overload that quietly stopped being one, fails here
+      # rather than in a consumer's publish.
+      - name: Verify the trim- and AOT-safe surface
+        run: |
+          dotnet publish tests/Versionary.TrimmingTests/Versionary.TrimmingTests.csproj \
+            --configuration Release \
+            --output ./aot
+          ./aot/Versionary.TrimmingTests
+
+      - run: dotnet pack --configuration Release --no-build --output ./artifacts
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: packages
+          path: ./artifacts/*.*nupkg
+
+  publish:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: packages
+          path: ./artifacts
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - run: >
+          dotnet nuget push "./artifacts/*.nupkg"
+          --source https://api.nuget.org/v3/index.json
+          --api-key "${{ secrets.NUGET_API_KEY }}"
+          --skip-duplicate

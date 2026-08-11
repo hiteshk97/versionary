@@ -1,0 +1,28 @@
+#nullable enable
+Versionary.AppliedMigration
+Versionary.AppliedMigration.AppliedMigration() -> void
+Versionary.AppliedMigration.AppliedMigration(System.Type! From, System.Type! To, Versionary.MigrationDirection Direction) -> void
+Versionary.AppliedMigration.Deconstruct(out System.Type! From, out System.Type! To, out Versionary.MigrationDirection Direction) -> void
+Versionary.AppliedMigration.Direction.get -> Versionary.MigrationDirection
+Versionary.AppliedMigration.Direction.init -> void
+Versionary.AppliedMigration.Equals(Versionary.AppliedMigration other) -> bool
+Versionary.AppliedMigration.From.get -> System.Type!
+Versionary.AppliedMigration.From.init -> void
+Versionary.AppliedMigration.To.get -> System.Type!
+Versionary.AppliedMigration.To.init -> void
+Versionary.IMigrationContext
+Versionary.IMigrationContext.Applied.get -> System.Collections.Generic.IReadOnlyList<Versionary.AppliedMigration>!
+Versionary.IMigrationContext.Record(Versionary.AppliedMigration migration) -> void
+Versionary.IMigrator<TFrom, TTo>
+Versionary.IMigrator<TFrom, TTo>.MigrateAsync(TFrom input, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<TTo>
+Versionary.IRequestContract<TResponse>
+Versionary.IVersionaryHandler<TRequest, TResponse>
+Versionary.IVersionaryHandler<TRequest, TResponse>.HandleAsync(TRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<TResponse>
+Versionary.MigrationDirection
+Versionary.MigrationDirection.Backward = 1 -> Versionary.MigrationDirection
+Versionary.MigrationDirection.Forward = 0 -> Versionary.MigrationDirection
+override Versionary.AppliedMigration.GetHashCode() -> int
+override Versionary.AppliedMigration.ToString() -> string!
+static Versionary.AppliedMigration.operator !=(Versionary.AppliedMigration left, Versionary.AppliedMigration right) -> bool
+static Versionary.AppliedMigration.operator ==(Versionary.AppliedMigration left, Versionary.AppliedMigration right) -> bool
+~override Versionary.AppliedMigration.Equals(object obj) -> bool

@@ -1,0 +1,22 @@
+<Project>
+
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <!-- Set after the import: the root props decides this before IsPackable is known here. -->
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <!--
+      Samples are written to be read, not to model production analyzer hygiene:
+      CA1303  literal strings passed to Console.WriteLine
+      CA1848  LoggerMessage delegates instead of ILogger extension methods
+      CA1873  boxing log arguments that may go unused if the level is disabled
+      CA2007  ConfigureAwait on every await
+      CA1812  types only instantiated by the container
+      CA1716  'Default' is a reserved word in VB, which matters for a namespace someone might
+              reference from another language. Nobody references a sample.
+    -->
+    <NoWarn>$(NoWarn);CA1303;CA1848;CA1873;CA2007;CA1812;CA1716</NoWarn>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+    <PackageId>Versionary.Abstractions</PackageId>
+    <!--
+      The types here live in the Versionary namespace, not Versionary.Abstractions, so that
+      referencing either package gives you the same namespace — the convention every
+      Microsoft.Extensions.*.Abstractions package follows. Without this the default root namespace
+      is the project name, and a file added from an IDE template silently lands in
+      Versionary.Abstractions instead, splitting the namespace in two.
+    -->
+    <RootNamespace>Versionary</RootNamespace>
+    <Description>Dependency-free abstractions for Versionary: the IMigrator&lt;TFrom, TTo&gt; contract and migration audit trail. Reference this from assemblies that define migrators but should not take a dependency on the Versionary runtime.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MinVer" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup Label="Public API surface lock">
+    <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" PrivateAssets="all" />
+    <AdditionalFiles Include="PublicAPI.Shipped.txt" />
+    <AdditionalFiles Include="PublicAPI.Unshipped.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Versionary" />
+    <InternalsVisibleTo Include="Versionary.Tests" />
+  </ItemGroup>
+
+</Project>

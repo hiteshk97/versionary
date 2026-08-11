@@ -1,0 +1,112 @@
+#nullable enable
+Microsoft.Extensions.DependencyInjection.VersionaryServiceCollectionExtensions
+Versionary.AmbiguousMigrationPathException
+Versionary.AmbiguousMigrationPathException.At.get -> System.Type!
+Versionary.AmbiguousMigrationPathException.Candidates.get -> System.Collections.Generic.IReadOnlyList<Versionary.Graph.MigrationEdge!>!
+Versionary.DependencyInjection.IVersionaryBuilder
+Versionary.DependencyInjection.IVersionaryBuilder.Graph.get -> Versionary.Graph.IMigrationGraph!
+Versionary.DependencyInjection.IVersionaryBuilder.Services.get -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+Versionary.DependencyInjection.IVersionaryBuilder.ValidateHandledContracts(System.Collections.Generic.IEnumerable<System.Type!>! handledContracts) -> Versionary.Diagnostics.MigrationGraphValidationResult!
+Versionary.DependencyInjection.VersionaryConfiguration
+Versionary.DependencyInjection.VersionaryConfiguration.AddHandler(System.Type! handlerType) -> Versionary.DependencyInjection.VersionaryConfiguration!
+Versionary.DependencyInjection.VersionaryConfiguration.AddHandler<THandler>() -> Versionary.DependencyInjection.VersionaryConfiguration!
+Versionary.DependencyInjection.VersionaryConfiguration.AddHandler<TRequest, TResponse>(System.Func<TRequest, System.IServiceProvider!, System.Threading.CancellationToken, System.Threading.Tasks.ValueTask<TResponse>>! handle) -> Versionary.DependencyInjection.VersionaryConfiguration!
+Versionary.DependencyInjection.VersionaryConfiguration.AddMigration<TFrom, TTo>(System.Func<TFrom, System.Threading.CancellationToken, System.Threading.Tasks.ValueTask<TTo>>! migrate) -> Versionary.DependencyInjection.VersionaryConfiguration!
+Versionary.DependencyInjection.VersionaryConfiguration.AddMigration<TFrom, TTo>(System.Func<TFrom, TTo>! migrate) -> Versionary.DependencyInjection.VersionaryConfiguration!
+Versionary.DependencyInjection.VersionaryConfiguration.AddMigrator(System.Type! migratorType) -> Versionary.DependencyInjection.VersionaryConfiguration!
+Versionary.DependencyInjection.VersionaryConfiguration.AddMigrator<TMigrator>() -> Versionary.DependencyInjection.VersionaryConfiguration!
+Versionary.DependencyInjection.VersionaryConfiguration.HandlerLifetime.get -> Microsoft.Extensions.DependencyInjection.ServiceLifetime
+Versionary.DependencyInjection.VersionaryConfiguration.HandlerLifetime.set -> void
+Versionary.DependencyInjection.VersionaryConfiguration.MigratorLifetime.get -> Microsoft.Extensions.DependencyInjection.ServiceLifetime
+Versionary.DependencyInjection.VersionaryConfiguration.MigratorLifetime.set -> void
+Versionary.DependencyInjection.VersionaryConfiguration.RegisterFromAssemblies(params System.Reflection.Assembly![]! assemblies) -> Versionary.DependencyInjection.VersionaryConfiguration!
+Versionary.DependencyInjection.VersionaryConfiguration.RegisterFromAssemblyContaining(System.Type! markerType) -> Versionary.DependencyInjection.VersionaryConfiguration!
+Versionary.DependencyInjection.VersionaryConfiguration.RegisterFromAssemblyContaining<T>() -> Versionary.DependencyInjection.VersionaryConfiguration!
+Versionary.DependencyInjection.VersionaryConfiguration.TrackAppliedMigrations.get -> bool
+Versionary.DependencyInjection.VersionaryConfiguration.TrackAppliedMigrations.set -> void
+Versionary.DependencyInjection.VersionaryConfiguration.TreatValidationWarningsAsErrors.get -> bool
+Versionary.DependencyInjection.VersionaryConfiguration.TreatValidationWarningsAsErrors.set -> void
+Versionary.DependencyInjection.VersionaryConfiguration.ValidateOnBuild.get -> bool
+Versionary.DependencyInjection.VersionaryConfiguration.ValidateOnBuild.set -> void
+Versionary.DependencyInjection.VersionaryConfiguration.VersionaryConfiguration() -> void
+Versionary.Diagnostics.MigrationGraphIssue
+Versionary.Diagnostics.MigrationGraphIssue.Code.get -> string!
+Versionary.Diagnostics.MigrationGraphIssue.Code.init -> void
+Versionary.Diagnostics.MigrationGraphIssue.Deconstruct(out Versionary.Diagnostics.MigrationIssueSeverity Severity, out string! Code, out string! Message) -> void
+Versionary.Diagnostics.MigrationGraphIssue.Equals(Versionary.Diagnostics.MigrationGraphIssue other) -> bool
+Versionary.Diagnostics.MigrationGraphIssue.Message.get -> string!
+Versionary.Diagnostics.MigrationGraphIssue.Message.init -> void
+Versionary.Diagnostics.MigrationGraphIssue.MigrationGraphIssue() -> void
+Versionary.Diagnostics.MigrationGraphIssue.MigrationGraphIssue(Versionary.Diagnostics.MigrationIssueSeverity Severity, string! Code, string! Message) -> void
+Versionary.Diagnostics.MigrationGraphIssue.Severity.get -> Versionary.Diagnostics.MigrationIssueSeverity
+Versionary.Diagnostics.MigrationGraphIssue.Severity.init -> void
+Versionary.Diagnostics.MigrationGraphValidationResult
+Versionary.Diagnostics.MigrationGraphValidationResult.Errors.get -> System.Collections.Generic.IEnumerable<Versionary.Diagnostics.MigrationGraphIssue>!
+Versionary.Diagnostics.MigrationGraphValidationResult.IsValid.get -> bool
+Versionary.Diagnostics.MigrationGraphValidationResult.Issues.get -> System.Collections.Generic.IReadOnlyList<Versionary.Diagnostics.MigrationGraphIssue>!
+Versionary.Diagnostics.MigrationGraphValidationResult.ThrowIfInvalid(bool treatWarningsAsErrors = false) -> void
+Versionary.Diagnostics.MigrationGraphValidationResult.Warnings.get -> System.Collections.Generic.IEnumerable<Versionary.Diagnostics.MigrationGraphIssue>!
+Versionary.Diagnostics.MigrationIssueCodes
+Versionary.Diagnostics.MigrationIssueSeverity
+Versionary.Diagnostics.MigrationIssueSeverity.Error = 1 -> Versionary.Diagnostics.MigrationIssueSeverity
+Versionary.Diagnostics.MigrationIssueSeverity.Warning = 0 -> Versionary.Diagnostics.MigrationIssueSeverity
+Versionary.Execution.IContractTranslator
+Versionary.Execution.IContractTranslator.AdaptAsync<TTarget>(object? message, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<TTarget>
+Versionary.Execution.IContractTranslator.IsCurrent(object! message) -> bool
+Versionary.Execution.IContractTranslator.StepAsync(object! message, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<object!>
+Versionary.Execution.IContractTranslator.ToAsync<TTarget>(object! message, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<TTarget>
+Versionary.Execution.IContractTranslator.ToCurrentAsync(object! message, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<object!>
+Versionary.Execution.IVersionarySender
+Versionary.Execution.IVersionarySender.SendAsync<TResponse>(Versionary.IRequestContract<TResponse>! request, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.ValueTask<TResponse>
+Versionary.Execution.IVersionarySender.SendAsync<TResponse>(object! request, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.ValueTask<TResponse>
+Versionary.Graph.IMigrationGraph
+Versionary.Graph.IMigrationGraph.Edges.get -> System.Collections.Generic.IReadOnlyCollection<Versionary.Graph.MigrationEdge!>!
+Versionary.Graph.IMigrationGraph.Explain() -> string!
+Versionary.Graph.IMigrationGraph.GetNextHop(System.Type! source) -> Versionary.Graph.MigrationPath!
+Versionary.Graph.IMigrationGraph.GetPathToTerminal(System.Type! source) -> Versionary.Graph.MigrationPath!
+Versionary.Graph.IMigrationGraph.TryGetPath(System.Type! source, System.Type! destination, out Versionary.Graph.MigrationPath? path) -> bool
+Versionary.Graph.IMigrationGraph.Validate() -> Versionary.Diagnostics.MigrationGraphValidationResult!
+Versionary.Graph.MigrationEdge
+Versionary.Graph.MigrationEdge.From.get -> System.Type!
+Versionary.Graph.MigrationEdge.MigratorType.get -> System.Type?
+Versionary.Graph.MigrationEdge.To.get -> System.Type!
+Versionary.Graph.MigrationPath
+Versionary.Graph.MigrationPath.Destination.get -> System.Type?
+Versionary.Graph.MigrationPath.Edges.get -> System.Collections.Generic.IReadOnlyList<Versionary.Graph.MigrationEdge!>!
+Versionary.Graph.MigrationPath.IsEmpty.get -> bool
+Versionary.Graph.MigrationPath.Length.get -> int
+Versionary.Graph.MigrationPath.Source.get -> System.Type?
+Versionary.MigrationFailedException
+Versionary.MigrationFailedException.Direction.get -> Versionary.MigrationDirection
+Versionary.MigrationFailedException.From.get -> System.Type!
+Versionary.MigrationFailedException.MigratorType.get -> System.Type?
+Versionary.MigrationFailedException.To.get -> System.Type!
+Versionary.MigrationPathNotFoundException
+Versionary.MigrationPathNotFoundException.From.get -> System.Type!
+Versionary.MigrationPathNotFoundException.To.get -> System.Type!
+Versionary.VersionaryConfigurationException
+Versionary.VersionaryConfigurationException.VersionaryConfigurationException(string! message) -> void
+Versionary.VersionaryConfigurationException.VersionaryConfigurationException(string! message, System.Exception! innerException) -> void
+Versionary.VersionaryException
+Versionary.VersionaryException.VersionaryException(string! message) -> void
+Versionary.VersionaryException.VersionaryException(string! message, System.Exception! innerException) -> void
+Versionary.VersionaryHandlerNotFoundException
+Versionary.VersionaryHandlerNotFoundException.CurrentContract.get -> System.Type!
+Versionary.VersionaryHandlerNotFoundException.SentContract.get -> System.Type!
+const Versionary.Diagnostics.MigrationIssueCodes.AmbiguousForwardPath = "VER003" -> string!
+const Versionary.Diagnostics.MigrationIssueCodes.Cycle = "VER002" -> string!
+const Versionary.Diagnostics.MigrationIssueCodes.DuplicateEdge = "VER001" -> string!
+const Versionary.Diagnostics.MigrationIssueCodes.RequestReachesNoHandler = "VER006" -> string!
+const Versionary.Diagnostics.MigrationIssueCodes.ResponseCannotReturn = "VER007" -> string!
+const Versionary.Diagnostics.MigrationIssueCodes.SelfEdge = "VER004" -> string!
+const Versionary.Diagnostics.MigrationIssueCodes.UnreachableHandler = "VER005" -> string!
+override Versionary.Diagnostics.MigrationGraphIssue.GetHashCode() -> int
+override Versionary.Diagnostics.MigrationGraphIssue.ToString() -> string!
+override Versionary.Diagnostics.MigrationGraphValidationResult.ToString() -> string!
+override Versionary.Graph.MigrationEdge.ToString() -> string!
+override Versionary.Graph.MigrationPath.ToString() -> string!
+static Microsoft.Extensions.DependencyInjection.VersionaryServiceCollectionExtensions.AddVersionary(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, System.Action<Versionary.DependencyInjection.VersionaryConfiguration!>! configure) -> Versionary.DependencyInjection.IVersionaryBuilder!
+static Versionary.Diagnostics.MigrationGraphIssue.operator !=(Versionary.Diagnostics.MigrationGraphIssue left, Versionary.Diagnostics.MigrationGraphIssue right) -> bool
+static Versionary.Diagnostics.MigrationGraphIssue.operator ==(Versionary.Diagnostics.MigrationGraphIssue left, Versionary.Diagnostics.MigrationGraphIssue right) -> bool
+static Versionary.Graph.MigrationPath.Empty.get -> Versionary.Graph.MigrationPath!
+~override Versionary.Diagnostics.MigrationGraphIssue.Equals(object obj) -> bool
