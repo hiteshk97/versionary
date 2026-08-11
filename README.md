@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
-  <a href="https://www.nuget.org/packages/Versionary"><img alt="NuGet" src="https://img.shields.io/nuget/v/Versionary.svg"></a>
+  <a href="https://www.nuget.org/packages/Versionary"><img alt="NuGet" src="https://img.shields.io/nuget/vpre/Versionary.svg"></a>
   <a href="https://www.nuget.org/packages/Versionary"><img alt="Downloads" src="https://img.shields.io/nuget/dt/Versionary.svg"></a>
   <a href="https://github.com/hiteshk97/versionary/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/hiteshk97/versionary/actions/workflows/ci.yml/badge.svg"></a>
   <img alt="Targets" src="https://img.shields.io/badge/net-8.0%20%7C%2010.0-512BD4">
@@ -112,15 +112,17 @@ Versionary is that for .NET, with some deliberate differences in [How it works](
 ## Install
 
 ```bash
-dotnet add package Versionary
-dotnet add package Versionary.MediatR   # only if you already use MediatR
+dotnet add package Versionary --prerelease
+dotnet add package Versionary.MediatR --prerelease   # only if you already use MediatR
 ```
+
+`--prerelease` is required while the latest release is `1.0.0-rc.1`; it comes off once 1.0.0 ships.
 
 | Package | What you get |
 | --- | --- |
-| **`Versionary`** | Everything. Graph, sender, dispatch. Depends on the DI and logging abstractions and nothing else. |
-| **`Versionary.Abstractions`** | `IRequestContract<TResponse>`, `IMigrator<TFrom, TTo>` and `IVersionaryHandler<TRequest, TResponse>`, zero dependencies. Reference it from your contracts assembly. |
-| **`Versionary.MediatR`** | A pipeline behaviour, if you're already on MediatR. Optional. The core doesn't know MediatR exists. |
+| **[`Versionary`](https://www.nuget.org/packages/Versionary)** | Everything. Graph, sender, dispatch. Depends on the DI and logging abstractions and nothing else. |
+| **[`Versionary.Abstractions`](https://www.nuget.org/packages/Versionary.Abstractions)** | `IRequestContract<TResponse>`, `IMigrator<TFrom, TTo>` and `IVersionaryHandler<TRequest, TResponse>`, zero dependencies. Reference it from your contracts assembly. |
+| **[`Versionary.MediatR`](https://www.nuget.org/packages/Versionary.MediatR)** | A pipeline behaviour, if you're already on MediatR. Optional. The core doesn't know MediatR exists. |
 
 `net8.0` and `net10.0`. MIT.
 
@@ -663,9 +665,12 @@ You control every client. Deleting a version beats supporting one.
 
 ## Status
 
-Pre-1.0. Settled enough to build on, not frozen. Breaking changes may land before 1.0.0 and will be
-called out in the release notes. The public surface is locked by
-`Microsoft.CodeAnalysis.PublicApiAnalyzers`, so nothing shifts by accident.
+Release candidate — the current release is
+[`1.0.0-rc.1`](https://www.nuget.org/packages/Versionary/1.0.0-rc.1). The API is complete and the
+shape is settled; the rc exists to catch anything real usage turns up before 1.0.0 freezes the
+surface. Breaking changes are still possible until then and will be called out in the release notes.
+The public surface is locked by `Microsoft.CodeAnalysis.PublicApiAnalyzers`, so nothing shifts by
+accident.
 
 ## Contributing
 
