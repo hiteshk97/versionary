@@ -7,7 +7,7 @@
 <p align="center">
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
   <a href="https://www.nuget.org/packages/Versionary"><img alt="NuGet" src="https://img.shields.io/nuget/v/Versionary.svg"></a>
-  <a href="https://www.nuget.org/packages/Versionary"><img alt="Downloads" src="https://img.shields.io/nuget/dt/Versionary.svg"></a>
+  <a href="https://www.nuget.org/packages/Versionary"><img alt="Downloads" src="https://img.shields.io/nuget/dt/Versionary.svg?label=downloads"></a>
   <a href="https://github.com/hiteshk97/versionary/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/hiteshk97/versionary/actions/workflows/ci.yml/badge.svg"></a>
   <img alt="Targets" src="https://img.shields.io/badge/net-8.0%20%7C%2010.0-512BD4">
 </p>
